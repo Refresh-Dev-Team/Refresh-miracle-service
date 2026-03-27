@@ -5,8 +5,8 @@ import { useRef, useState } from "react";
 
 // Replace these with your real images
 const imgFrame11 = "/images/crowd.jpg";
-const imgFrame12 = "https://images.unsplash.com/photo-1506157786151-b8491531f063?w=400&h=300&fit=crop";
-const imgFrame13 = "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=400&h=300&fit=crop";
+const imgFrame12 = "/images/first lady.jpg";
+const imgFrame13 = "images/impartation.jpg";
 
 export function CommunitySection() {
   const sectionRef = useRef<HTMLDivElement>(null);
