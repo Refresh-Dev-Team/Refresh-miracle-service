@@ -3,14 +3,14 @@
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef, useState, useEffect } from "react";
 import { Logo } from "@/components/logo";
-import { Navigation, MobileNavigation, MobileMenuButton } from "@/components/navigation";
+// import { Navigation, MobileNavigation, MobileMenuButton } from "@/components/navigation";
 import { Button } from "@/components/ui/button";
 
 function HeroContent() {
   return (
-    <div className="flex flex-col gap-8 items-center z-10 pt-32">
+    <div className="flex flex-col gap-6 items-center z-10">
       <motion.div
-        className="flex flex-col gap-5 items-start text-center text-white max-w-[600px]"
+        className="flex flex-col gap-4 items-start text-center text-white max-w-[600px]"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
@@ -101,24 +101,24 @@ export default function Hero() {
           <Logo />
 
           {/* Desktop Navigation */}
-          <Navigation />
+          {/* <Navigation /> */}
 
           {/* Mobile Menu Button */}
-          <MobileMenuButton
+          {/* <MobileMenuButton
             isOpen={mobileMenuOpen}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          />
+          /> */}
         </div>
 
         {/* Mobile Menu */}
-        <MobileNavigation
+        {/* <MobileNavigation
           isOpen={mobileMenuOpen}
           onClose={() => setMobileMenuOpen(false)}
-        />
+        /> */}
       </motion.header>
 
       {/* Hero Content */}
-      <div className="absolute inset-0 flex items-end justify-center px-4 pb-20">
+      <div className="absolute inset-0 flex items-center justify-center px-4">
         <HeroContent />
       </div>
     </section>
