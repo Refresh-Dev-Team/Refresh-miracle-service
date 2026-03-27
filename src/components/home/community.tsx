@@ -4,9 +4,9 @@ import { motion, useScroll, useTransform } from "motion/react";
 import { useRef, useState } from "react";
 
 // Replace these with your real images
-const imgFrame11 = "/images/first lady.jpg";
+const imgFrame11 = "/images/impartation.jpg";
 const imgFrame12 = "/images/crowd.jpg";
-const imgFrame13 = "images/impartation.jpg";
+const imgFrame13 = "images/first lady.jpg";
 
 export function CommunitySection() {
   const sectionRef = useRef<HTMLDivElement>(null);
