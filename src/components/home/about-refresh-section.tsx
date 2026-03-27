@@ -17,17 +17,16 @@ export function AboutRefreshSection() {
   const leftY = useTransform(scrollYProgress, [0, 1], [100, -100]);
   const rightY = useTransform(scrollYProgress, [0, 1], [150, -150]);
   const lineRotate = useTransform(scrollYProgress, [0, 1], [-90.15, -88]);
-  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
 
   return (
     <div
       ref={sectionRef}
-      className="relative min-h-screen w-full bg-white py-16 px-4 md:py-24 lg:py-32 overflow-hidden"
+      className="relative min-h-screen w-full bg-white py-12 md:py-16 lg:py-20 overflow-hidden"
     >
       {/* Left Section */}
       <motion.div
         style={{ y: leftY }}
-        className="absolute left-4 md:left-16 lg:left-20 top-20 md:top-32 w-full max-w-[90%] md:max-w-[391px] z-20"
+        className="absolute left-4 md:left-16 lg:left-20 top-16 md:top-24 w-full max-w-[90%] md:max-w-[340px] z-20"
       >
         {/* Decorative Line */}
         <motion.div
@@ -35,7 +34,7 @@ export function AboutRefreshSection() {
           whileInView={{ width: 90 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
           viewport={{ once: true, margin: "-100px" }}
-          className="h-[3px] bg-[#FFAE3D] mb-1.5 relative"
+          className="h-[3px] bg-[#FFAE3D] mb-3 relative"
         />
 
         {/* Main Heading */}
@@ -44,9 +43,9 @@ export function AboutRefreshSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true, margin: "-100px" }}
-          className="flex flex-col gap-8 md:gap-10"
+          className="flex flex-col gap-6 md:gap-8"
         >
-          <h1 className="font-['Inter'] font-semibold text-[32px] md:text-[40px] lg:text-[48px] leading-tight text-[#120124] uppercase tracking-tight">
+          <h1 className="font-['Inter'] font-semibold text-2xl md:text-3xl lg:text-4xl leading-tight text-[#120124] uppercase tracking-tight">
             Welcome to refresh!
           </h1>
 
@@ -56,7 +55,7 @@ export function AboutRefreshSection() {
             onHoverEnd={() => setIsHovered(false)}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
-            className="relative bg-white px-6 md:px-8 py-5 md:py-6 rounded-full border-2 border-[#120124] w-fit group transition-all duration-300 hover:shadow-lg"
+            className="relative bg-white px-5 md:px-6 py-2.5 md:py-3 rounded-full border-2 border-[#120124] w-fit group transition-all duration-300 hover:shadow-lg text-sm md:text-base"
           >
             <motion.div
               className="absolute inset-0 bg-[#120124] rounded-full -z-10"
@@ -65,8 +64,8 @@ export function AboutRefreshSection() {
               transition={{ duration: 0.3 }}
             />
             <motion.p
-              className="font-['Inter'] font-medium italic text-[20px] md:text-[24px] whitespace-nowrap relative z-10"
-              animate={{ color: isHovered ? "#ffffff" : "#463e4e" }}
+              className="font-['Inter'] font-medium italic whitespace-nowrap relative z-10"
+              animate={{ color: isHovered ? '#ffffff' : '#463e4e' }}
               transition={{ duration: 0.3 }}
             >
               Connect
@@ -78,16 +77,16 @@ export function AboutRefreshSection() {
       {/* Decorative Vertical Line */}
       <motion.div
         style={{ rotate: lineRotate }}
-        className="absolute left-1/2 md:left-[60%] lg:left-[70%] top-0 md:top-[-11px] hidden md:flex items-center justify-center h-[392px] w-[1.002px] origin-center"
+        className="absolute left-1/2 md:left-[60%] lg:left-[70%] top-0 md:top-[-11px] hidden md:flex items-center justify-center h-[300px] lg:h-[392px] w-[1.002px] origin-center"
       >
         <div className="flex-none">
-          <div className="h-0 relative w-[392.001px]">
+          <div className="h-0 relative w-[300px] lg:w-[392.001px]">
             <motion.div
               initial={{ pathLength: 0 }}
               whileInView={{ pathLength: 1 }}
               transition={{ duration: 1.5, ease: "easeInOut" }}
               viewport={{ once: true }}
-              className="absolute inset-[-4.96px_-0.34%_-1.94px_0]"
+              className="absolute inset-0"
             >
               <svg
                 className="block size-full"
@@ -112,7 +111,7 @@ export function AboutRefreshSection() {
       {/* Right Section */}
       <motion.div
         style={{ y: rightY }}
-        className="absolute left-4 md:left-[45%] lg:left-[calc(40%+13px)] top-[500px] md:top-[88px] w-full max-w-[90%] md:max-w-[580px] lg:max-w-[747px] flex flex-col gap-6 md:gap-10 z-10"
+        className="absolute left-4 md:left-[45%] lg:left-[calc(40%+13px)] top-[380px] md:top-[88px] w-full max-w-[90%] md:max-w-[500px] lg:max-w-[600px] flex flex-col gap-5 md:gap-8 z-10"
       >
         {/* Text Content */}
         <motion.div
@@ -120,7 +119,7 @@ export function AboutRefreshSection() {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true, margin: "-100px" }}
-          className="flex flex-col gap-4 font-['Inter'] font-normal text-[18px] md:text-[20px] lg:text-[24px] text-[#0b0215] px-2.5"
+          className="flex flex-col gap-3 font-['Inter'] font-normal text-base md:text-lg lg:text-xl text-[#0b0215]"
         >
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -152,7 +151,7 @@ export function AboutRefreshSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
             viewport={{ once: true, margin: "-100px" }}
-            className="text-[16px] md:text-[18px] lg:text-[20px] mt-2"
+            className="text-sm md:text-base mt-1"
           >
             ~Pastor Mercy Joy
           </motion.p>
@@ -165,15 +164,15 @@ export function AboutRefreshSection() {
           transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true, margin: "-100px" }}
           whileHover={{ y: -5 }}
-          className="bg-[#f5e7ff] rounded-md p-6 md:p-8 shadow-sm hover:shadow-xl transition-all duration-300"
+          className="bg-[#f5e7ff] rounded-md p-5 md:p-6 shadow-sm hover:shadow-xl transition-all duration-300"
         >
-          <div className="bg-[#f9f1ff] rounded-md p-6 md:p-8 lg:p-9">
+          <div className="bg-[#f9f1ff] rounded-md p-5 md:p-6 lg:p-7">
             <motion.h2
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.6 }}
               viewport={{ once: true }}
-              className="font-['Inter'] font-semibold text-[20px] md:text-[22px] lg:text-[24px] leading-relaxed text-[#0b0215] mb-3 md:mb-4"
+              className="font-['Inter'] font-semibold text-lg md:text-xl leading-relaxed text-[#0b0215] mb-2 md:mb-3"
             >
               What is Refresh ?
             </motion.h2>
@@ -183,7 +182,7 @@ export function AboutRefreshSection() {
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.8 }}
               viewport={{ once: true }}
-              className="font-['Inter'] font-normal text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed text-[#0b0215]"
+              className="font-['Inter'] font-normal text-sm md:text-base leading-relaxed text-[#0b0215]"
             >
               <span>
                 Refresh is an interdenominational program that hold every last{" "}
@@ -196,7 +195,7 @@ export function AboutRefreshSection() {
                 It is parked with powerful messages, fervent worship. It is a
                 program you don't want to miss. See you there
               </span>
-              <span className="text-[22px] md:text-[24px]">!!</span>
+              <span className="text-lg md:text-xl">!!</span>
             </motion.p>
           </div>
         </motion.div>
