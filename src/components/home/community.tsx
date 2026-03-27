@@ -53,7 +53,7 @@ export function CommunitySection() {
 
       {/* Content Section */}
       <div className="px-4 md:px-8 lg:px-20">
-        <div className="flex flex-col lg:flex-row gap-6 lg:gap-10 items-start">
+        <div className="flex flex-col lg:flex-row gap-6 lg:gap-10 items-center">
           {/* Left Content */}
           <motion.div
             style={{ y: textY }}
