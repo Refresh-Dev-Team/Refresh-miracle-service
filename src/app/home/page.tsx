@@ -8,7 +8,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <AboutRefreshSection />
+      {/* <AboutRefreshSection /> */}
       <CommunitySection />
       <TestimonialSection />
       <Footer />
