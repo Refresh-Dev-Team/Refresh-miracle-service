@@ -5,6 +5,7 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
+import { parsePhoneNumberFromString } from "libphonenumber-js";
 import styles from "./register.module.css";
 
 export default function RegisterPage() {
@@ -15,8 +16,21 @@ export default function RegisterPage() {
 
   const [name, setName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [phoneError, setPhoneError] = useState<string | null>(null);
   const [location, setLocation] = useState("");
   const [howDidYouHear, setHowDidYouHear] = useState("");
+
+  function normalizePhone(raw: string): { normalized?: string; error?: string } {
+    if (!raw) {
+      return { error: "Please enter your phone number." };
+    }
+    const value = raw.startsWith("+") ? raw : `+${raw}`;
+    const phone = parsePhoneNumberFromString(value);
+    if (!phone || !phone.isValid()) {
+      return { error: "Enter a valid international phone number." };
+    }
+    return { normalized: phone.number };
+  }
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -24,10 +38,14 @@ export default function RegisterPage() {
     setNotice(null);
 
     try {
-      const normalizedPhone = phoneNumber.startsWith("+") ? phoneNumber : `+${phoneNumber}`;
+      const { normalized, error } = normalizePhone(phoneNumber);
+      if (error) {
+        setPhoneError(error);
+        throw new Error(error);
+      }
       const payload = {
         name,
-        phone_number: normalizedPhone,
+        phone_number: normalized,
         location: location || null,
         how_did_you_hear_about_refresh: howDidYouHear || null,
       };
@@ -103,7 +121,7 @@ export default function RegisterPage() {
         </Link>
 
         <header className={styles.hero}>
-          <h1 className={styles.title}>Church Registration</h1>
+          <h1 className={styles.title}>Refresh Registration</h1>
           <p className={styles.subtitle}>
             Fill in your details to register for service. This helps us welcome you properly and plan
             each gathering smoothly.
@@ -125,17 +143,31 @@ export default function RegisterPage() {
 
             <label className={styles.field}>
               <span className={styles.label}>Phone number</span>
+              <span style={{ fontSize: 12, color: "#475467", marginTop: 6 }}>
+                Select your country first, then enter your number.
+              </span>
               <PhoneInput
                 country="ng"
                 value={phoneNumber}
-                onChange={(value) => setPhoneNumber(value)}
+                onChange={(value) => {
+                  setPhoneNumber(value);
+                  const { error } = normalizePhone(value);
+                  setPhoneError(error ?? null);
+                }}
+                countryCodeEditable={false}
+                enableSearch
                 inputProps={{ required: true, name: "phone" }}
-                placeholder="e.g. +234 801 234 5678"
+                placeholder="Select country, then type number"
                 containerClass={styles.phoneContainer}
                 inputClass={styles.phoneInput}
                 buttonClass={styles.phoneButton}
                 dropdownClass={styles.phoneDropdown}
               />
+              {phoneError && (
+                <span style={{ color: "#b42318", fontSize: 12, marginTop: 6 }}>
+                  {phoneError}
+                </span>
+              )}
             </label>
 
             <label className={styles.field}>
