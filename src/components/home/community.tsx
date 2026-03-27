@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from "motion/react";
 import { useRef, useState } from "react";
 
 // Replace these with your real images
-const imgFrame11 = "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&h=800&fit=crop";
+const imgFrame11 = "/images/crowd.jpg";
 const imgFrame12 = "https://images.unsplash.com/photo-1506157786151-b8491531f063?w=400&h=300&fit=crop";
 const imgFrame13 = "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=400&h=300&fit=crop";
 
