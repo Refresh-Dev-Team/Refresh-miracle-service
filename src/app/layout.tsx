@@ -40,8 +40,8 @@ export default function RootLayout({
             const iframe = document.createElement("iframe");
             iframe.src = "https://refresh-ai-one.vercel.app";
             iframe.style.position = "fixed";
-            iframe.style.bottom = "80px";
-            iframe.style.right = "20px";
+            iframe.style.bottom = "40px";
+            iframe.style.right = "0px";
             iframe.style.width = "380px";
             iframe.style.height = "600px";
             iframe.style.border = "none";
