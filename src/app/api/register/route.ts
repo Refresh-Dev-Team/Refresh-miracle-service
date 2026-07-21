@@ -11,6 +11,7 @@ const HOP_BY_HOP = new Set([
   "upgrade",
   "host",
   "content-length",
+  "accept-encoding",
 ]);
 
 function filterHeaders(headers: Headers) {
@@ -24,7 +25,7 @@ function filterHeaders(headers: Headers) {
 }
 
 async function proxy(req: NextRequest) {
-  const backendBase = process.env.BACKEND_URL || "http://13.60.239.133:8000";
+  const backendBase = process.env.BACKEND_URL || "";
   const target = new URL("/api/register", backendBase);
   target.search = req.nextUrl.search;
 
@@ -38,6 +39,8 @@ async function proxy(req: NextRequest) {
   });
 
   const respHeaders = filterHeaders(upstream.headers);
+  respHeaders.delete("content-encoding");
+  respHeaders.delete("content-length");
   const respBody = await upstream.arrayBuffer();
 
   return new NextResponse(respBody, {
