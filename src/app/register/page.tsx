@@ -3,14 +3,11 @@
 import Link from "next/link";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { parsePhoneNumberFromString } from "libphonenumber-js";
 import styles from "./register.module.css";
 
 export default function RegisterPage() {
-  const router = useRouter();
-  const base = process.env.NEXT_PUBLIC_API_BASE || "";
   const [busy, setBusy] = useState(false);
   const [notice, setNotice] = useState<{ type: "success" | "error"; text: string } | null>(null);
 
@@ -50,8 +47,7 @@ export default function RegisterPage() {
         how_did_you_hear_about_refresh: howDidYouHear || null,
       };
 
-      const url = base ? `${base}/api/register` : "/api/register";
-      const res = await fetch(url, {
+      const res = await fetch("/api/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -75,9 +71,11 @@ export default function RegisterPage() {
       setHowDidYouHear("");
       setNotice({
         type: "success",
-        text: `${data.message} Redirecting...`,
+        text: data.message,
       });
-      setTimeout(() => router.push("/"), 1200);
+      window.setTimeout(() => {
+        window.location.reload();
+      }, 1200);
     } catch (err) {
       setNotice({
         type: "error",
