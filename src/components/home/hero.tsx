@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef, useState, useEffect } from "react";
 import { Logo } from "@/components/logo";
@@ -34,11 +35,19 @@ function HeroContent() {
         </motion.p>
       </motion.div>
       <motion.div
+        className="flex flex-col sm:flex-row gap-4 items-center"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.6, delay: 1, ease: "easeOut" }}
       >
-        <Button size="md">Join us</Button>
+        <Link href="/register">
+          <Button size="md">Register</Button>
+        </Link>
+        <Link href="/register">
+          <Button size="md" variant="outline" className="border-white/70">
+            Check-in
+          </Button>
+        </Link>
       </motion.div>
     </div>
   );
